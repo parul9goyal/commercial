@@ -62,7 +62,7 @@
                                     <tbody>
 
                                     <?php
-                                    // echo "<pre/>"; print_r($purchase_request_list); 
+//                                 echo "<pre>"; print_r($type_list); die();
                                     $i = 0;
                                     foreach ($purchase_request_list as $list) {
                                         $i++;
@@ -85,7 +85,7 @@
                                             <td><?php echo $list['supplier_name']; ?></td>
                                             <!--<td><?php// echo $list['pr_recd_on']; ?></td>-->
                                             <td><?php echo $list['order_placed_by']; ?></td>
-                                            <td><?php echo $list['action_taken_by']; ?></td>
+                                            <td><?php echo $type_list[$list['action_taken_by']]; ?></td>
                                             <td>
 
                                                 <?php

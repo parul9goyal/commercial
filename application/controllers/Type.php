@@ -31,7 +31,7 @@ class Type extends CI_Controller {
         //$this->load->library('session');
         // Load database
         $this->load->model('type_model');
-        $this->load->model('department_model');
+        
 
         //Loading url helper
         //$this->load->helper('url');
@@ -41,6 +41,7 @@ class Type extends CI_Controller {
 
 
         $result = $this->type_model->typelist_info();
+        
         //print_r($result);
         $data = array(
             'typedata' => $result,

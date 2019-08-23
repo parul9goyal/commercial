@@ -21,6 +21,7 @@ class Purchase_model extends CI_Model {
      */
     function __construct() {
         // Call the Model constructor
+        
         parent::__construct();
     }
     
@@ -426,7 +427,7 @@ echo "Error in Audit Checklist creation";
   // Checklist for CAPEX / PR SOP
 	public function add_sop_checklist($pr_sr_no){
 	//echo "-".$pr_sr_no; die;
-    $pr_sop_checklist_chk = $_POST['pr_sop_checklist_chk'];
+        $pr_sop_checklist_chk = $_POST['pr_sop_checklist_chk'];
 	$pr_sop_checklistRadio =  $_POST['pr_sop_checklistRadio'];
 	$pr_sop_checklist = $_POST['pr_sop_checklist'];
 	$user_justification_chk = $_POST['user_justification_chk'];

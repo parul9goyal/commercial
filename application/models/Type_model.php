@@ -20,6 +20,38 @@ Class type_model extends CI_Model {
 			return $query->result();
 		} 
 	}
+        public function typelist_info_by_key_val_arr()
+	{
+		
+		$this->db->select('*');
+		$this->db->from('types');		
+		$query = $this->db->get();
+                
+                $type_arry = array();
+		if ($query->num_rows() > 0) 
+		{	
+//                   return $var=$query->result_array();
+//                   exit;
+                     //print_r($var); die();
+                    foreach($query->result_array() as $key=> $value){
+                    $type_arry[$value['type_id']]= $value['type_name'];
+                 }
+			return $type_arry;
+		} 
+	}
+        
+//        public function departments() {
+//        $this->db->select('*');
+//        $this->db->from('department');
+//        $query = $this->db->get();
+//        $dep_arry=array();
+//        if ($query->num_rows() > 0) {
+//            foreach ($query->result_array() as $row =>$value){
+//               $dep_arry[$value['department_id']]=$value['department_name'];
+//            }
+//        }
+//        return $dep_arry;
+//    }
 	
 	public function typelist_info_data($id)
 	{
@@ -35,6 +67,9 @@ Class type_model extends CI_Model {
                        
 		} 
 	}
+       
+        
+        
 
 	// Read data from database to show data in admin page
 	public function read_user_information($username) 

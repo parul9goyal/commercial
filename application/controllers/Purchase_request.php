@@ -107,8 +107,7 @@ class Purchase_request extends CI_Controller {
 		//  echo "in"; die;
 		$prid='';   
 	      $data['purchase_request_list']=$this->purchase_model->display_purchase_request($prid);
-		 echo "<pre>";
-		 print_r($data); die;
+	      $data['type_list']=$this->type_model->typelist_info_by_key_val_arr();
 		$this->load->view('purchase_request_list',$data);
 	   
 		}
