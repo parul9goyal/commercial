@@ -31,8 +31,8 @@ class Type extends CI_Controller {
         //$this->load->library('session');
         // Load database
         $this->load->model('type_model');
+        $this->load->model('department_model');
         
-
         //Loading url helper
         //$this->load->helper('url');
     }
@@ -41,7 +41,6 @@ class Type extends CI_Controller {
 
 
         $result = $this->type_model->typelist_info();
-        
         //print_r($result);
         $data = array(
             'typedata' => $result,
@@ -107,8 +106,8 @@ class Type extends CI_Controller {
         } else {
             $tid = $_GET['tid'];
             $result_records = $this->type_model->typelist_info_data($tid);
-            echo "<pre>";
-            print_r($result_records);
+            //echo "<pre>";
+            //print_r($result_records);
             $data = array(
                 'userrecord' => $result_records,
             );

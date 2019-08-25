@@ -96,3 +96,6 @@ define('VP_PARENT_ID', 0);
 define('PENDING', 0);
 define('APPROVED', 1);
 define('REJECTED', 2);
+
+// Caompany Name
+define('THOMSAN_DIGITAL', 'TD');

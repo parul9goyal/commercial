@@ -23,6 +23,9 @@ class Purchase_request extends CI_Controller {
         parent::__construct();
             $this->load->model('purchase_model');
             $this->load->model('type_model');
+            $this->load->model('unit_region_model');
+            $this->load->model('department_model');
+            $this->load->helper('string');
             error_reporting(0);		 
     }
 	public function index()
@@ -95,26 +98,35 @@ class Purchase_request extends CI_Controller {
 		}
 	// function for Editing PR
 	// update purchase request columns
-	 function update_purchase_request($pr_srno) {
+	 function update_purchase_request() {
 	   //echo "--".$pr_srno; die;
-	 // echo "<pre/>"; print_r($_POST); die;	
+           $pr_srno = $this->input->post('pr_srno');
+	 //echo "<pre/>"; print_r($_POST); die;	
 	  $data['result'] = $this->purchase_model->update_purchase_request($pr_srno);
-	   
+	    print_r($data);
+            exit;
 		}
 	
 	  // purchase request listing
 	  function purchase_request_list() {
-		//  echo "in"; die;
-		$prid='';   
-	      $data['purchase_request_list']=$this->purchase_model->display_purchase_request($prid);
+                $prid='';   
+	      $data['purchase_request_list']=$this->purchase_model->display_purchase_request($prid); 
+             
 	      $data['type_list']=$this->type_model->typelist_info_by_key_val_arr();
+              $data['status_list']= $this->purchase_model::$actionstatus;
+              $data['session_data'] = $this->session->userdata('logged_in');
+              
+//              echo "<pre>";
+//              print_r($data);
+//              die(99);
 		$this->load->view('purchase_request_list',$data);
 	   
 		}
 	
-	function display_pr_list($pr_srno) {
+	function display_pr_list() {
 	   //echo "in"; die;
 	   //echo $pr_srno; die;
+            $pr_srno = $this->input->post('pr_srnumber');
 		$data['pr_list']=$this->purchase_model->display_pr_list($pr_srno);
 		//echo "<pre/>"; print_r($data);
 		echo json_encode($data);
@@ -298,6 +310,17 @@ class Purchase_request extends CI_Controller {
 		*/
 	}
 	
+        public function generate_pr_sn() {
+            $request_data=$_POST;
+            
+            $issue_session=date('Y', strtotime($request_data['issuing_date'])) ."-". date('y', strtotime('+1 year'));           
+            $unit=$this->unit_region_model->unit_regions_by_id($request_data['unit_id']);
+            $dep=$this->department_model->department_short_by_id($request_data['dept_id']);
+            $random=random_string('numeric', 4);
+            echo THOMSAN_DIGITAL . "-" . $unit->unit_region_code . "/". $issue_session ."/".$dep->department_short."/".$random;
+            exit;
+           
+        }
 	
 	
 }

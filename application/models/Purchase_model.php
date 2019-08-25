@@ -178,7 +178,9 @@ $result1 = $this->db->query($sql1);
 	
  function update_purchase_request($pr_srno) {
 	$session_data = $this->session->userdata('logged_in');
+       
     $username = $session_data['username'];
+    $uid=$session_data['uid'];
 //echo "<pre/>"; print_r($_POST); die;
 $department_id= trim($_POST['department_id']);
 $unit_region_id = trim($_POST['unit_id']);
@@ -192,8 +194,8 @@ $unit_region_id = trim($_POST['unit_id']);
  $supplier_name =  trim($_POST['supplier_name']); 
  //$pr_issue_date =  trim($_POST['pr_issue_date']); 
  $expense = trim($_POST['selectedOption']);
-$query="update purchase_request set department_id='".$department_id."',unit_region_id='".$unit_region_id."',supplier_name='".$supplier_name."', expense='".$expense."', pr_issue_date='".$issuing_date."',phone_person='".$phone_person."',action_taken_by='".$action_taken_by."', pr_recd_on='".$pr_reacd_on."',order_placed_by='".$order_placed_by."',status='0' where sr_no='".$pr_srno."'";
-
+$query="update purchase_request set department_id='".$department_id."',unit_region_id='".$unit_region_id."',supplier_name='".$supplier_name."', expense='".$expense."', pr_issue_date='".$issuing_date."',phone_person='".$phone_person."',action_taken_by='".$action_taken_by."', pr_recd_on='".$pr_reacd_on."',order_placed_by='".$order_placed_by."',user_id='".$uid."',status='0' where sr_no='".$pr_srno."'";
+//return  $query;
 
    $result = $this->db->query($query);
 
@@ -213,7 +215,7 @@ function display_purchase_request($id) {
             $sql = "select * from purchase_request where pr_id='" . $id . "'";
         } else {
 			 
-      $sql = "select distinct prs.pr_status,prs.status_by,prs.pr_status_date,prs.remarks,pr.sr_no, pr.department_id,pr.pr_issue_date,pr.supplier_name,pr.order_placed_by,pr.phone_person,pr.expense,pr.action_taken_by,pr.status,d.department_name,u.unit_region_name from purchase_request pr join department d on(pr.department_id=d.department_id) left join  pr_status prs on(pr.sr_no=prs.pr_no) join unit_region u on(pr.unit_region_id=u.unit_region_id)"; 
+      $sql = "select distinct prs.pr_status,prs.status_by,prs.pr_status_date,prs.remarks,pr.sr_no,pr.user_id,pr.department_id,pr.pr_issue_date,pr.supplier_name,pr.order_placed_by,pr.phone_person,pr.expense,pr.action_taken_by,pr.status,d.department_name,u.unit_region_name from purchase_request pr join department d on(pr.department_id=d.department_id) left join  pr_status prs on(pr.sr_no=prs.pr_no) join unit_region u on(pr.unit_region_id=u.unit_region_id)"; 
 
 /*$sql = "select distinct prs.pr_status,prs.status_by,prs.pr_status_date,prs.remarks,pr.sr_no, pr.department_id,pr.pr_issue_date,pr.supplier_name,pr.order_placed_by,pr.phone_person,pr.expense,pr.action_taken_by,pr.status,d.department_name from purchase_request pr join department d on(pr.department_id=d.department_id) left join  pr_status prs on(pr.sr_no=prs.pr_no) order by pr.pr_issue_date desc"; */
 			 
