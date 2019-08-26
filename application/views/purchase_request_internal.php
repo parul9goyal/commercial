@@ -167,15 +167,15 @@
                                                 <th rowspan="2">Reorder Point</th>
                                                 <th rowspan="2">Reorder Quantity</th>
                                                 <th rowspan="2">Qty. Req.</th>
-                                                <th colspan="2"> Supplier</th>
+                                                <th colspan="2">Previous Supplier</th>
                                                 <th colspan="2">Order Placed on</th>
                                                 <th rowspan="2">Action</th>
                                             </tr>
                                             <tr>
                                                 <th> Rate </th>
-                                                <th> Supplier </th>
+                                                <th> Total </th>
                                                 <th> Rate </th>
-                                                <th> Supplier </th>
+                                                <th> Total </th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -342,7 +342,7 @@
 
     <script>
         function createPurchaseRequest() {
-            
+            //alert("in");
             var dept_id = $("#departmentsDropdownSelect").val();
             var unit_id = $("#unitDropdownSelect").val();
             var issuing_date = $("#issuing_date").val();
@@ -355,6 +355,7 @@
                     issuing_date: issuing_date
                 },
                 success: function (data) {
+					alert(data);
                     $("#sr_no").val(data);
                     $('#prModal').modal('show');
                 }

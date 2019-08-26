@@ -15,129 +15,153 @@
 					<!--	here fetch data from database-->
 								
        
-       <div class="row">
-            
-           <div class="col-md-6">
-              <div class="form-group">
-				  <label for="">Indenting Department</label>
- 
-               <select id="departmentsDropdownSelect" class="form-control select2 select2-hidden-accessible" name="department">
-		  
-         <option id="departmentsDropdown" value="<?php echo $list['department_name'];?>"><?php echo $list['department_name'];?></option>     
-   
-	 </select> 	
-              </div>
-            </div>
-		   <input class="form-control" type="hidden" value="<?php echo $list['pr_id'];?>" id="pr_id" name="pr_id">
-  
-            <div class="col-md-6">
-              <div class="form-group" id="">
-				  <label for="">S. No.</label>
-				  
- 			<input class="form-control" disabled value="<?php echo $_GET['sr_no'];?>" id="pr_srno" name="">
-	  <!--<textarea class="example-default-value" id="example-textarea" style="width: 400px; height: 50px;">Test</textarea>-->
-               </div>
-		   </div>
-		</div>
-		
-	   <div class="row">		
-          <div class="col-md-6">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Issuing date</label>
-              <input class="form-control" id="issuing_date" name="issuing_date" value="<?php echo date("d M Y", strtotime($list['pr_issue_date'])); ?>">
-                <span id="errMsg" class="text-danger"></span>
-            </div>
-          </div>  
-		   
-		  <div class="col-md-6">
-            <div class="form-group">
-                <label for="exampleInputEmail1">On Phone/in person</label>
-              <input class="form-control" value="<?php echo $list['phone_person'];?>" id="phone_person"  name="phone_person">
-                <span id="errMsg" class="text-danger"></span>
-            </div>
-          </div>    
-			
-        </div>
+        <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">Unit</label>
+                            <select id="unitDropdownSelect" class="form-control select2 select2-hidden-accessible" name="unit">
+                                <option hidden value="" >--Select Units--</option>
+                                <?php foreach ($units_region as $units) { ?>
+                                    <option id="departmentsDropdown" value="<?php echo $units['unit_region_id']; ?>"><?php echo $units['unit_region_name']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
 
-    			
-	    <div class="row">
-          <div class="col-md-6">
-              <div class="form-group">
-                  <label for="exampleInputEmail1">Supplier/Make Referred</label>
-        <input class="form-control" value="<?php echo $list['supplier_name'];?>" name="supplier_name" id="supplier_name">
-                <span id="errMsg" class="text-danger"></span>
-              </div>
-            </div>
-          <div class="col-md-6">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Action Taken by</label>
-              <input class="form-control" value="<?php echo $list['action_taken_by'];?>" id="action_taken_by" name="action_taken_by">
-                <span id="errMsg" class="text-danger"></span>
-            </div>
-          </div> 
-        </div>
+                    <div class="col-md-6">
+                        <div class="form-group" id="">
+                            <label for="">S. No.</label>
+                           <input class="form-control" disabled value="<?php echo $_GET['sr_no'];?>" id="pr_srno" name="">
+                        </div>
+                    </div>
+                </div>
 
-		
-				
-		 <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                  <label for="exampleInputEmail1">Order Placed by</label>
-                  <input class="form-control auto ui-autocomplete-input" value="<?php echo $list['order_placed_by'];?>"  name="order_placed_by" id="order_placed_by">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">Indenting Department</label>
+                            <select id="departmentsDropdownSelect" class="form-control select2 select2-hidden-accessible" name="department">
+                                <option hidden value="" >--Select Department--</option>
+                                <?php foreach ($departments as $department) { ?>
+                                    <option id="departmentsDropdown" value="<?php echo $department['department_id']; ?>"><?php echo $department['department_name']; ?></option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            &nbsp;&nbsp;&nbsp;&nbsp;
+                            <label><input type="radio" id="phone_person" name="phone_person" value="1" > On Phone &nbsp;&nbsp;
+                                <input type="radio"  id="phone_person" name="phone_person" value="2" checked /> In person</label>
 
-                     </div>
-            </div>
-			  <div class="col-md-6">
-              <div class="form-group">
-				<!--  <label for="">PR Recd. On</label> -->
- 		<!--	<input class="form-control" value="<?php echo $list['pr_recd_on'];?>" id="pr_reacd_on"  disabled name="pr_reacd_on">		-->	
-               </div>
-		   </div>
-			 
-		 <div class="col-md-6">
-            <div class="form-group">
-                <label for="exampleInputEmail1"></label>
-             &nbsp;&nbsp;
-      <label><input type="radio" name="optradio" value="capex"> Capex &nbsp;&nbsp;
-	  <input type="radio" name="optradio" value="opex"> Opex</label>
+                            <span id="errMsg" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
 
-                <span id="errMsg" class="text-danger"></span>
-            </div>
-          </div> 
-        </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Issuing date</label>
+                            <input class="form-control" placeholder="Enter Date" value="<?php echo date("Y-m-d"); ?>" type="date" id="issuing_date" name="issuing_date">
+                            <span id="errMsg" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Action Taken by</label>
+                            <select id="action_taken_by" class="form-control select2 select2-hidden-accessible" name="action_taken_by">
+                                <?php foreach ($actionTakenBy as $action) { ?>
+                                    <option value="<?php echo $action['type_id']; ?>"><?php echo $action['type_name']; ?></option>
+                                <?php } ?>
+                            </select>
+                            <span id="errMsg" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="">Supplier/Make Referred</label>
+                            <select id="supplierDropdownSelect" class="form-control select2 select2-hidden-accessible" name="department">
+                                <?php foreach ($suppliers as $supplier) { ?>
+                                    <option id="departmentsDropdown" value="<?php echo $supplier['supplier_id']; ?>"><?php echo $supplier['supplier_name']; ?></option>
+                                <?php } ?>
+                            </select>
+                            <span id="errMsg" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <?php
+                    $session_data = $this->session->userdata('logged_in');
+                    $username = $session_data['username'];
+                    ?>             
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Order Placed by</label>
+                            <input class="form-control auto ui-autocomplete-input" placeholder="Enter Order Placed by" value="<?php echo ucfirst($username); ?>" name="order_placed_by" id="order_placed_by">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1"></label>
+                            &nbsp;&nbsp;
+                            <label><input type="radio" id="expense" name="expense" value="1" checked> opEx &nbsp;&nbsp;
+                                <input type="radio" id="expense" name="expense" value="2"> capEx</label>
+                            <span id="errMsg" class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for=""><a href="#" onclick="createPurchaseRequest()" data-toggle="modal" data-target="#prModal"><span class="fa fa-plus"> &nbsp;</span>PURCHASE REQUISITION</a></label>
+                        </div>
+                    </div>
+                </div>
 			<br/>	
 	<?php } ?>				
 				
 								
 										<div class="form-group" style="border:1px solid; color:#555; padding:5px;">
-                                        <!-- add rows -->											
-										<input type="button" value="Add Row" onclick="insRow('myTable')" />				
+                                   		
 											
-											<table id="myTable" width="100%" border="0" cellspacing="2" cellpadding="3">
-											<tr>	
-												<td><strong>Description </strong></td>
-												<td><strong>Units</strong></td>
-												<td><strong>Avg cods</strong></td>
-												<td><strong>Qty in stock</strong></td>
-												<td><strong>Reorder Point</strong></td>
-												<td><strong>Reorder Quantity</strong></td>
-												<td><strong>Qty Req</strong></td>
-												<td><strong>Supplier Rate</strong></td>
-												<!--<td><strong>pr_supplier_supplier</strong></td>-->
-												<!--<td><strong>order_placed_rate</strong></td>-->
-												<!--<td><strong>order_placed_supplier</strong></td>-->
-												<td>&nbsp;</td>
-											</tr>
+										 <table class="table table-striped table-bordered table-hover mb-0" id="dataTables-example">
+											  <thead>
+                                            <tr>
+                                              <!--  <th rowspan="2">S.No.</th> -->
+                                                <th rowspan="2">Description</th>
+                                                <th rowspan="2">Unit</th>
+                                                <th rowspan="2">Avg. Cods.</th>
+                                                <th rowspan="2">Qty. in Stock</th>
+                                                <th rowspan="2">Reorder Point</th>
+                                                <th rowspan="2">Reorder Quantity</th>
+                                                <th rowspan="2">Qty. Req.</th>
+                                                <th colspan="2">Previous Supplier</th>
+                                                <th colspan="2">Order Placed on</th>
+                                                <th rowspan="2">Edit</th>
+                                            </tr>
+                                            <tr>
+                                                <th> Rate </th>
+                                                <th> Total </th>
+                                                <th> Rate </th>
+                                                <th> Total </th>
+                                            </tr>
+                                        </thead>
 											<?php 
 											for($i=0; $i<count($purchase_request_list); $i++)
 											{												
 											?>
+												
 											<tr>
+						<!--<td><input class="form-control" type="text" id="" value="<?php echo $i; ?>"/></td> -->
 	<td>
    <textarea class="form-control" cols="7" rows="1" name="pr_description[]" id="pr_description"><?php echo $purchase_request_list[$i]['pr_description'];?></textarea>
    </td>
  <td>
-	<input class="form-control" type="text" name="pr_unit[]" id="pr_unit" value="<?php echo $purchase_request_list[$i]['units'];?>"/>
+	<input class="form-control" type="text" name="units[]" id="units" value="<?php echo $purchase_request_list[$i]['units'];?>"/>
   </td>
  <td>
  <input class="form-control" type="text" name="avg_cods[]" id="avg_cods" value="<?php echo $purchase_request_list[$i]['avg_cods'];?>"/>
@@ -158,15 +182,25 @@
 												 <td>
  <input class="form-control" type="text" name="pr_supplier_rate[]" id="pr_supplier_rate" value="<?php echo $purchase_request_list[$i]['pr_supplier_rate'];?>"/>
 	</td>
+												<td>
+ <input class="form-control" type="text" name="pr_supplier_supplier[]" id="pr_supplier_supplier" value="<?php echo $purchase_request_list[$i]['pr_supplier_supplier'];?>"/>
+	</td>
+												<td>
+ <input class="form-control" type="text" name="order_placed_rate[]" id="order_placed_rate" value="<?php echo $purchase_request_list[$i]['order_placed_rate'];?>"/>
+													<td>
+ <input class="form-control" type="text" name="order_placed_supplier[]" id="order_placed_supplier" value="<?php echo $purchase_request_list[$i]['order_placed_supplier'];?>"/>
+	</td>
+												<td><i class="glyphicon glyphicon-pencil"></i></td>
 		<!--  <td><input class="form-control" type="button" value="Delete" onclick="delRow(this)"></td> -->
 											</tr>
+											
 										<?php } ?>
 											</table>									
 																															
 										<!-- end add rows -->										
                                         </div>
 				
-				   				
+	 				
 	  <div class="row">
       <div class="col-md-3">
 	  <input type="button" class="btn btn-info" name="pr_submit" value="Edit Request" onclick="edit_pr();"/>
@@ -187,7 +221,7 @@
 <script>
 
 function edit_pr() {
-//alert("in");
+alert("in");
 var sr_no = "<?php echo $_GET['sr_no'];?>";
 var department_id = $("#departmentsDropdownSelect option:selected").val();
 var issuing_date = $('#issuing_date').val();
@@ -209,10 +243,11 @@ var pr_supplier_rate = $('#pr_supplier_rate').val();
 var pr_supplier_supplier = $('#pr_supplier_supplier').val();
 var order_placed_rate = $('#order_placed_rate').val();
 var order_placed_supplier = $('#order_placed_supplier').val();
+	
 //alert(reorder_point);	
 //var selectedOption = $("input:radio[name=optradio]:checked").val()
 //alert("<?php echo base_url(); ?>index.php/purchase_request/edit_purchase_request/"+pr_srno);
-alert(pr_description);
+//alert(pr_description);
 			
 		//alert(pr_supplier_supplier);
 	//alert("<?php echo base_url(); ?>index.php/`	/update_pr/"+sr_no);
@@ -224,7 +259,7 @@ alert(pr_description);
 		   alert(data);
 		//data = JSON.parse(data);	
 		//json_decode($data);
-    window.location.href = "<?php echo base_url(); ?>index.php/purchase_request/purchase_request_list";
+  //  window.location.href = "<?php echo base_url(); ?>index.php/purchase_request/purchase_request_list";
             $('#departmentModal').modal('hide');
 			$('#department_name').val('');
 			$('#department_descp').val('');

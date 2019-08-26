@@ -138,25 +138,21 @@
                                             </td>
             <!-- <td><?php echo $list['phone_person']; ?></td>-->
 
-
-                                            <?php if ($list['user_id'] == $session_data['uid'] ) { ?>
-                                                <td><a href="<?php echo base_url(); ?>index.php/purchase_request/edit_purchase_request?sr_no=<?php echo $list['sr_no']; ?>">Edit</a> 
-                                                    | <a href="<?php echo base_url(); ?>index.php/purchase_request/internal_memo?sr_no=<?php echo $list['sr_no']; ?>">Memo</a> </td> 
-
-                                            <?php } else if (($username == 'user5' || $username == 'pooja') && $list['status'] == 'Approved') {
-                                                ?>  <td class="text-center"><a href="" class="disabled">Edit</a> 
-                                                    | <a href="<?php echo base_url(); ?>index.php/purchase_request/internal_memo?sr_no=<?php echo $list['sr_no']; ?>" class="disabled">Memo</a> 
+								
+<?php if (($username == 'test') && $list['status'] == '0') {
+                                                ?>  <td class="text-center"><a href="<?php echo base_url(); ?>index.php/purchase_request/edit_purchase_request?sr_no=<?php echo $list['sr_no']; ?>">Edit</a> 
+                                                    | <a href="<?php echo base_url(); ?>index.php/purchase_request/internal_memo?sr_no=<?php echo $list['sr_no']; ?>" class="">Memo</a> 
                                                     | <a href="<?php echo base_url(); ?>index.php/purchase_request/pr_quotation">Quotation</a>
                                                     | <a href="<?php echo base_url(); ?>index.php/purchase_request/checklist?sr_no=<?php echo $list['sr_no']; ?>">Checklist</a>
                                                     | <a href="<?php echo base_url(); ?>index.php/purchase_request/negotiation?sr_no=<?php echo $list['sr_no']; ?>">Negotiation</a> 
                                                     | <a href="<?php echo base_url(); ?>index.php/purchase_request/comparision?sr_no=<?php echo $list['sr_no']; ?>">Comparision </a>
                                                     | <a href="<?php echo base_url(); ?>index.php/purchase_request/audit_checklist?sr_no=<?php echo $list['sr_no']; ?>">Audit</a></td>
                                             <?php } else if (($username == 'parul') || ($username == 'vikas') || ($username == 'pooja') && ($list['status'] == 'Pending' || $list['status'] == 'Approved' || $list['status'] == 'Rejected')) { ?>  <td><a href="<?php echo base_url(); ?>index.php/purchase_request/internal_memo?sr_no=<?php echo $list['sr_no']; ?>">Edit Memo</a>  </td> 
-                                            <?php } else { ?>
-                                                                  <!--  <td><a href="<?php echo base_url(); ?>index.php/purchase_request/edit_purchase_request?sr_no=<?php echo $list['sr_no']; ?>">Edit</a> | <a href="<?php echo base_url(); ?>index.php/purchase_request/internal_memo?sr_no=<?php echo $list['sr_no']; ?>">Memo</a> | <a href="<?php echo base_url(); ?>index.php/purchase_request/pr_quotation">Quotation</a> | <a href="<?php echo base_url(); ?>index.php/purchase_request/checklist?sr_no=<?php echo $list['sr_no']; ?>">Checklist</a> | <a href="<?php echo base_url(); ?>index.php/purchase_request/negotiation?sr_no=<?php echo $list['sr_no']; ?>">Negotiation</a> | <a href="<?php echo base_url(); ?>index.php/purchase_request/comparision?sr_no=<?php echo $list['sr_no']; ?>">Comparision </a>| <a href="<?php echo base_url(); ?>index.php/purchase_request/audit_checklist?sr_no=<?php echo $list['sr_no']; ?>">Audit</a></td>-->
-                                            </tr>
-                                        <?php }
-                                        ?>
+                                            <?php } ?>											
+											
+											
+											
+					
                                         <!-- Status updation code starts -->
 
                                     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

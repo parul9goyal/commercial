@@ -31,14 +31,18 @@
                                             </select>
                                         </div>
           </div> 
-				<div class="col-md-6">
-            <div class="form-group">
-                                            <label>From</label>
-                                            <select class="form-control" name="from" id="from" required>                                                			   <option value="">User 1</option>
-                                              <option value="">User 2</option>                          
-                                            </select>
-                                        </div>
-          </div> 
+				 <?php
+					//echo "<pre/>"; print_r($_SESSION) ; die;
+                    $session_data = $this->session->userdata('logged_in');
+                    $fname = $session_data['firstname'];
+                    ?>             
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">From</label>
+                            <input class="form-control auto ui-autocomplete-input" placeholder="Enter From" value="<?php echo ucfirst($fname); ?>" name="order_placed_by" id="order_placed_by">
+                        </div>
+                    </div>
+             
              
                 <!-- /.col-lg-12 -->
             </div>
@@ -46,7 +50,7 @@
 			<div class="col-md-6">
             <div class="form-group">
              <label for="">Date</label>
-             <input class="form-control" placeholder="Enter Date" type="date" id="date" name="date" value="<?php echo $list['pr_date']; ?>">
+             <input class="form-control" placeholder="Enter Date" type="date" id="date" name="date" value="<?php echo date("Y-m-d"); ?>">
               <span id="errMsg" class="text-danger"></span>
             </div>
           </div> 
@@ -98,7 +102,7 @@
    <button type="submit" class="btn btn-danger bg-red pull-left" onclick="internal_memo();" id="">Update  Memo</button>
 				</div>
 			 <div class="col-md-2">
-  <span class="btn btn-danger bg-red pull-right"><a href="<?php echo base_url();?>index.php/purchase_request/purchase_request_list">Back to PR List</a></span>
+  <span class="btn btn-danger bg-red pull-right"><a  style="text-decoration: none;" href="<?php echo base_url();?>index.php/purchase_request/purchase_request_list"><font color="white">Back to PR List</font></a></span>
 				</div>	
 				
 				</div>
