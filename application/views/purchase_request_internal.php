@@ -206,6 +206,19 @@
 
                                         </tbody>
                                     </table>
+									
+									<table class="table table-bordered table-responsive-md table-striped text-center mb-0" id="fixAtPositionForSignature">
+                                        <tbody
+                                        <tr>
+                                                <td colspan="4" class="" contenteditable="true">ORIGINATOR</td>
+                                                <td colspan="4" class="" contenteditable="true">Unit Head</td>
+                                                <td colspan="4" class="" contenteditable="true">STORE</td>
+										  <td colspan="4" class="" contenteditable="true">PURCHASE</td>
+	 									 <td colspan="4" class="" contenteditable="true">ED/FA</td>
+                                                
+                                            </tr>
+                                            </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
@@ -247,7 +260,13 @@
                                     </div>
                                 </div>
 
+ <div class="form-group">
+                                    <label class="">Description Code</label>
 
+                                    <div class="">
+                                        <input type="text" value="" placeholder="Enter Description Code" class="form-control" id="department_code" name="department_code">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!-- /.box-body -->
@@ -347,12 +366,12 @@
                                 //alert("in");
                                 var department_name = $('#department_name').val();
                                 var department_descp = $('#department_descp').val();
-
+ 								var department_code = $('#department_code').val();
                                 // alert(department_name);
                                 $.ajax({
                                     method: "POST",
                                     url: "<?php echo base_url(); ?>index.php/purchase_request/add_department",
-                                    data: {department_name: department_name, department_descp: department_descp},
+                                    data: {department_name: department_name, department_descp: department_descp, department_code:department_code},
                                     success: function (data) {
                                         //alert(data);
                                         data = JSON.parse(data);

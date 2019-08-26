@@ -14,7 +14,7 @@
 				<div class="col-md-6">
             <div class="form-group">
                 <label for="">Date</label>
-                <input class="form-control" type="date" placeholder="Enter Date" id="pr_chk_date" name="pr_chk_date">
+                <input class="form-control"  value="<?php echo date("Y-m-d"); ?>" type="date" placeholder="Enter Date" id="pr_chk_date" name="pr_chk_date">
                 <span id="errMsg" class="text-danger"></span>
             </div>
           </div> 

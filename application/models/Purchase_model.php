@@ -37,9 +37,10 @@ class Purchase_model extends CI_Model {
 		//echo "<pre/>"; print_r($_POST); die;	
 	    $department_name = trim($_POST['department_name']);
 	    $department_descp = trim($_POST['department_descp']);
+		$department_code = trim($_POST['department_code']);
 	    
     if(($department_name != "") || (!empty($department_name))){
-    $sql = "insert into department(department_name,department_desp) values('" . ($department_name) . "','" . ($department_descp) . "')";
+    $sql = "insert into department(department_name,department_desp,department_code) values('" . ($department_name) . "','" . ($department_descp) . "','" . ($department_code) . "' )";
      // echo $sql; die;
       $query = $this->db->query($sql);
 		

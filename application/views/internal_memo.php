@@ -23,14 +23,17 @@
                                             </select>
                                         </div>
           </div> 
-				<div class="col-md-6">
-            <div class="form-group">
-                                            <label>From</label>
-                                            <select class="form-control" name="from" id="from" required>                                                			   <option value="">User 1</option>
-                                              <option value="">User 2</option>                          
-                                            </select>
-                                        </div>
-          </div> 
+				  <?php
+					//echo "<pre/>"; print_r($_SESSION) ; die;
+                    $session_data = $this->session->userdata('logged_in');
+                    $fname = $session_data['firstname'];
+                    ?>             
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">From</label>
+                            <input class="form-control auto ui-autocomplete-input" placeholder="Enter From" value="<?php echo ucfirst($fname); ?>" name="order_placed_by" id="order_placed_by">
+                        </div>
+                    </div>
              
                 <!-- /.col-lg-12 -->
             </div>
@@ -38,7 +41,7 @@
 			<div class="col-md-6">
             <div class="form-group">
              <label for="">Date</label>
-             <input class="form-control" placeholder="Enter Date" type="date" id="date" name="date">
+             <input class="form-control" placeholder="Enter Date"  value="<?php echo date("Y-m-d"); ?>" type="date" id="date" name="date">
               <span id="errMsg" class="text-danger"></span>
             </div>
           </div> 
