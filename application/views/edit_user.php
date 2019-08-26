@@ -1,6 +1,6 @@
 <?php $this->load->view("common/top"); ?>
-		<?php $this->load->view('header_message');?>
-		<?php $this->load->view('left_message');?>
+<?php $this->load->view('header_message'); ?>
+<?php $this->load->view('left_message'); ?>
 		  
         <div id="page-wrapper">
             <div class="row">
@@ -26,38 +26,40 @@
                                     <div class="alert alert-danger">
 										<?php echo $success_message; ?>
 									</div>
-									<?php } 
-									foreach($userrecord as $recordslist) {
-									//print_r($userrecord);
+                                <?php
+                                }
+//                                echo "<pre>";
+//                                print_r($userrecord);
+                                foreach ($userrecord as $recordslist) {
+                                    
 									?>
 										<div class="form-group">
                                             <label>Username</label>
-                                            <input class="form-control" placeholder="Enter username" type="text" name="username" id="username" value="<?php echo $recordslist->username;?>" readonly>                                            
+                                        <input class="form-control" placeholder="Enter username" type="text" name="username" id="username" value="<?php echo $recordslist->username; ?>" readonly>                                            
                                         </div>
                                         <div class="form-group">
                                             <label>Password</label>
-                                            <input class="form-control" type="password" name="password" id="password" value="<?php echo $recordslist->password;?>" placeholder="Enter password" required>
+                                        <input class="form-control" type="password" name="password" id="password" value="<?php echo $recordslist->password; ?>" placeholder="Enter password" required>
                                         </div>
 										 <div class="form-group">
                                             <label>First Name</label>
-                                            <input class="form-control" type="text" name="fname" id="fname" value="<?php echo $recordslist->fname;?>" placeholder="Enter first name" required>
+                                        <input class="form-control" type="text" name="fname" id="fname" value="<?php echo $recordslist->fname; ?>" placeholder="Enter first name" required>
                                         </div>
 										 <div class="form-group">
                                             <label>Last Name</label>
-                                            <input class="form-control" type="text" name="lname" id="lname" value="<?php echo $recordslist->lname;?>" placeholder="Enter last name" required>
+                                        <input class="form-control" type="text" name="lname" id="lname" value="<?php echo $recordslist->lname; ?>" placeholder="Enter last name" required>
                                         </div>
                                         <div class="form-group">
                                             <label>Email</label>
-                                            <input class="form-control" type="email" name="email" id="email" placeholder="Enter email" value="<?php echo $recordslist->email_id;?>" required>
+                                        <input class="form-control" type="email" name="email" id="email" placeholder="Enter email" value="<?php echo $recordslist->email_id; ?>" required>
                                         </div>
+                                
 										<div class="form-group">
-                                            <label>Select Type</label>
-                                            <select class="form-control" name="type" id="type">                                                
-												<option value="1">Administrator</option>
-                                                <option value="2">Operation - Manager</option>
-                                                <option value="3">Operation - Team</option>
-                                                <option value="4">Account - Manager</option>
-                                                <option value="5">Account - Team</option>
+                                        <label>Department Role</label>
+                                        <select class="form-control" name="type" id="dep_role_type">                                                
+                                            <?php foreach ($actionTakenBy as $action) { ?>
+                                                <option value="<?php echo $action['type_id']; ?>"><?php echo $action['type_name']; ?></option>     
+                                            <?php } ?> 
                                             </select>
                                         </div>
 										
@@ -67,42 +69,34 @@
                                         </div>
 										
 										<?php 
-										
 										$statusval = $recordslist->status;
-										if($statusval == 1)
-										{
+                                    if ($statusval == 1) {
 											 $statusactive = "checked";
-										}
-										else
-										{
+                                    } else {
 											 $statusactive = "";
 										}
-										if($statusval == 0)
-										{
+                                    if ($statusval == 0) {
 											 $statusdeactive = "checked";
-										}
-										else
-										{
+                                    } else {
 											 $statusdeactive = "";
 										}
-										
 										?>
 										
 										<div class="form-group">
                                             <label>Status</label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="status" id="status" value="Active" <?php echo $statusactive;?>>Active
+                                            <input type="radio" name="status" id="status" value="Active" <?php echo $statusactive; ?>>Active
                                             </label>
                                             <label class="radio-inline">
                                                 <input type="radio" name="status" id="status" value="De-active" <?php echo $statusdeactive; ?>>De-Active
                                             </label>                                            
                                         </div>
-										<input type="hidden" name="userid" value="<?php echo $recordslist->uid;?>">
+                                    <input type="hidden" name="userid" value="<?php echo $recordslist->uid; ?>">
 
 									<?php } ?>										
 											
                                         <button type="submit" name="submit" class="btn btn-default">Submit</button>
-                                        <button type="reset" name="cancel" class="btn btn-default" onclick="location='/commercial/user/index'">Cancel</button>
+                                <button type="reset" name="cancel" class="btn btn-default" onclick="location.href='<?php echo base_url();?>user'">Cancel</button>
                                     </form>
                                 </div>
                                 
@@ -130,7 +124,7 @@
     </div>
     <!-- /#wrapper -->
 	<script>
-	document.getElementById("type").value='<?php echo $recordslist->type;?>';
+    document.getElementById("dep_role_type").value = '<?php echo $recordslist->type; ?>';
 	</script>
 
     <!-- jQuery -->
